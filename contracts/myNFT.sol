@@ -56,8 +56,8 @@ contract PersonalInformationNFT is ERC721URIStorage {
     }
 
     function generateHash(string memory personalInfo) private pure returns (string memory) {
-        bytes32 hash = keccak256(bytes(personalInfo));
-        return bytes32ToString(hash);
+        bytes32 hashedInfo = keccak256(bytes(personalInfo));
+        return uint256(hashedInfo);
     }
 
     function buyNFT(uint256 tokenId) external payable{
