@@ -36,14 +36,14 @@ contract PersonalInformationNFT is ERC721URIStorage {
     function mintNFT(
         string memory name,
         string memory description,
-        string memory personalInfo,
+        string memory personalInfoHash,
         uint256 maxbuyer
     ) external {
         uint256 tokenId = _tokenIdCounter.current();
         _safeMint(msg.sender, tokenId);
         _setTokenURI(tokenId, string(abi.encodePacked("ipfs://", Strings.toString(tokenId))));
 
-        string memory personalInfoHash = generateHash(personalInfo);
+        //string memory personalInfoHash = generateHash(personalInfo);
         NFTMetadata memory metadata = NFTMetadata(name, description, payable(msg.sender),personalInfoHash);
         //pair tokenId with info
         _tokenMetadata[tokenId] = metadata;
@@ -55,10 +55,12 @@ contract PersonalInformationNFT is ERC721URIStorage {
         _tokenIdCounter.increment();
     }
 
+    /*
     function generateHash(string memory personalInfo) private pure returns (string memory) {
         bytes32 hashedInfo = keccak256(bytes(personalInfo));
         return uint256(hashedInfo);
     }
+    */
 
     function buyNFT(uint256 tokenId) external payable{
         require(_exists(tokenId), "NFT does not exist");
@@ -86,11 +88,6 @@ contract PersonalInformationNFT is ERC721URIStorage {
         require(_exists(tokenId), "NFT does not exist");
         require(_isAuthorized(msg.sender, tokenId), "Unauthorized access");
         return _tokenMetadata[tokenId];
-    }
-
-    function getPersonalInformation(uint256 tokenId) external view returns (string memory) {
-        require(_exists(tokenId), "NFT does not exist");
-        require(isOwner(msg.sender, tokenId), "Unauthorized access");
     }
 
     function isOwner(address account,uint256 tokenId) public view returns (bool) {

@@ -1,0 +1,30 @@
+{
+  "name": "jnft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upload": "node src/ipfsInteraction.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreyzhanghc/JNFT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffreyzhanghc/JNFT/issues"
+  },
+  "homepage": "https://github.com/jeffreyzhanghc/JNFT#readme",
+  "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.22.1",
+    "express": "^4.18.2",
+    "ipfs-api": "^26.1.2",
+    "moralis": "^2.22.1"
+  }
+}

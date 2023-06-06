@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "foundry/contracts/FoundryTest.sol";
-import "./PersonalInformationNFT.sol";
+import "../lib/forge-std/src/Test.sol";
 
-contract PersonalInformationNFTTest is FoundryTest {
+contract PersonalInformationNFTTest is Test {
     PersonalInformationNFT private nftContract;
     
     function beforeEach() public override {
